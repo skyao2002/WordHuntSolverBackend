@@ -1,5 +1,16 @@
 from django.apps import AppConfig
-from .trie import TrieNode, add
+from django.conf import settings
+import os
+
+class TrieNode(object):
+    """
+    Our trie node implementation. Very basic. but does the job
+    """
+    
+    def __init__(self):
+        self.children = {}
+        # Is it the last character of the word.`
+        self.word_finished = False
 
 class SolverConfig(AppConfig):
     print("loading needed values...")
@@ -7,7 +18,8 @@ class SolverConfig(AppConfig):
     dictionaryTrie = TrieNode()
 
     print("loading dictionary")
-    with open("solver/dictionary.txt", "r") as infile:
+    dict_path = os.path.join(settings.TEXT_DIR, 'dictionary.txt')
+    with open(dict_path, "r") as infile:
         for line in infile:
             word = line.rstrip()
             curr = dictionaryTrie
@@ -20,15 +32,7 @@ class SolverConfig(AppConfig):
     
     dictionaryLoaded = True
 
-class TrieNode(object):
-    """
-    Our trie node implementation. Very basic. but does the job
-    """
-    
-    def __init__(self):
-        self.children = {}
-        # Is it the last character of the word.`
-        self.word_finished = False
+
 
 
 

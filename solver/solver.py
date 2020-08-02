@@ -1,5 +1,5 @@
 from .apps import SolverConfig
-from .trie import TrieNode
+from .apps import TrieNode
 
 directions = [
     (1,0),
