@@ -24,6 +24,7 @@ class SolverConfig(AppConfig):
             word = line.rstrip()
             curr = dictionaryTrie
             for i, char in enumerate(word):
+                char = char.upper()
                 if not char in curr.children:
                     curr.children[char] = TrieNode()
                 curr = curr.children[char]
