@@ -18,7 +18,7 @@ class SolverConfig(AppConfig):
     dictionaryTrie = TrieNode()
 
     print("loading dictionary")
-    dict_path = os.path.join(settings.TEXT_DIR, 'dictionary.txt')
+    dict_path = os.path.join(settings.DICTIONARY_DIR, 'colins-scrabble-dictionary.txt')
     with open(dict_path, "r") as infile:
         for line in infile:
             word = line.rstrip()

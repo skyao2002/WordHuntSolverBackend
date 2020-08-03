@@ -39,7 +39,7 @@ class solveWordHunt():
         
         self.ans.sort(key=sortAns, reverse=True)
 
-        temp = {}
+        temp = []
 
         self.ansNoDuplicates = []
 
