@@ -12,9 +12,8 @@ def solve_this(request):
         serializer = SolverSerializer(data=request.data)
         if serializer.is_valid():
             letters = serializer.validated_data.get("letters")
-            print(letters)
             solution = solveWordHunt(serializer.validated_data.get("letters"), serializer.validated_data.get("size"))
-            return Response({"answer": solution.ans}, status=status.HTTP_201_CREATED)
+            return Response({"answer": solution.ansNoDuplicates}, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:

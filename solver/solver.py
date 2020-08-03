@@ -39,8 +39,16 @@ class solveWordHunt():
         
         self.ans.sort(key=sortAns, reverse=True)
 
+        temp = {}
+
+        self.ansNoDuplicates = []
+
         for row in self.ans:
             row[1] = [int(i) for i in row[1].split()]
+            if row[0] not in temp:
+                temp.append(row[0])
+                self.ansNoDuplicates.append(row)
+
 
     def recurse(self, row, col, word, path, visited, currNode):
         if row < 0 or row >= self.size or col < 0 or col >= self.size:
